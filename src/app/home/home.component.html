@@ -1,0 +1,47 @@
+<h1 class="text-center" *ngIf="allData.length==0">Data loading.....</h1>
+
+<section *ngIf="allData.length>0" style="background-color: #eee;">
+    <div class="container py-5">
+        <h1 class="text-center fw-bold mb-3">Countries ({{allData.length}})</h1>
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Search by name" 
+            aria-label="Search by name" aria-describedby="button-addon2"
+            [(ngModel)]="searchTerm" (change)="inputChanged()">
+            <button class="btn btn-outline-secondary" type="button" id="button-addon2"
+            (change)="inputChanged()">Search</button>
+          </div>
+        <div class="row">
+
+
+            <div class="col-md-6 col-lg-4 mt-5 mb-lg-0" *ngFor="let country of allData;let i=index">
+                <a [routerLink]="['details', country.ccn3]">
+                    <div class="card h-100">
+                        <div class="d-flex justify-content-between p-3">
+                            <div class="bg-danger rounded-circle d-flex align-items-center justify-content-center shadow-1-strong"
+                                style="width: 35px; height: 35px;">
+                                <p class="text-white mb-0 small">{{i+1}}</p>
+                            </div>
+                            <p class="lead mb-0 fw-bold">{{country.name.common}}</p>
+                        </div>
+                        <p class="lead mb-0 text-center fw-bold">{{country.name.official}}</p>
+                        <img [src]="country.flags['png']" class="card-img-top" alt="Laptop" width="100" height="200" />
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between mb-3">
+                                <h5 class="mb-0">Keys</h5>
+                            </div>
+                            <div class="d-flex justify-content-between mb-2">
+                                <ul class="text-muted mb-0">
+                                    <li *ngFor="let n of country.name.nativeName|keyvalue">
+                                        {{n.key}} : <span class="fw-bold">{{n.value["official"]}},
+                                            {{n.value["common"]}}</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+        </div>
+    </div>
+</section>

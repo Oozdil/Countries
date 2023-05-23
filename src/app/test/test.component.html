@@ -1,0 +1,144 @@
+<h1>Countries</h1>
+<div *ngFor="let country of countries;let i=index">
+    <b>{{i}}</b><br>
+    <!--
+    cca2 : {{country.cca2}}<br>
+    ccn3 : {{country.ccn3}}<br>
+    cca3 : {{country.cca3}}<br>
+    cioc : {{country.cioc}}<br>
+    independent : {{country.independent}}<br>
+    status : {{country.status}}<br>
+    flag : {{country.flag}}<br>
+    gini : <p *ngFor="let g of country.gini|keyvalue">
+        {{g.key}} : {{g.value}}
+    </p>
+    tld : <ul>
+        <li *ngFor="let t of country.tld|keyvalue">
+            {{t.value}}<br>
+        </li>
+    </ul>
+    unmember : {{country.unMember|json}}<br>
+    
+    idd root : {{country.idd.root}}<br>
+    id suffixes : <ul>
+        <li *ngFor="let s of country.idd.suffixes|keyvalue">
+            {{s.value}}<br>
+        </li>
+    </ul>
+    capitals : <ul>
+        <li *ngFor="let c of country.capital|keyvalue">
+            {{c.value}}<br>
+        </li>
+    </ul>
+
+    currencies : <ul>
+        <li *ngFor="let c of country.currencies|keyvalue">
+            {{c.key}} <br>
+            name : {{c.value["name"]}}
+            symbol : {{c.value["symbol"]}}
+
+        </li>
+    </ul>
+
+    subregion : {{country.subregion}}<br>
+
+    coat of arms
+<img [src]="country.coatOfArms['png']" width="50" height="50">
+<img [src]="country.coatOfArms['svg']" width="50" height="50">
+
+lat : {{country.latlng[0]}}<br>
+lng : {{country.latlng[1]}}<br>
+
+region : {{country.region}}<br>
+
+population : {{country.population}}<br>
+
+area : {{country.area}}<br>
+
+fifa : {{country.fifa}}<br>
+
+landlocked : {{country.landlocked}}<br>
+
+borders : <ul>
+    <li *ngFor="let b of country.borders">
+        {{b}}
+    </li>
+</ul>
+
+start of week : {{country.startOfWeek}}<br>
+
+capital info :<br>
+lat : {{country.capitalInfo["latlng"][0]}}<br>
+lng : {{country.capitalInfo["latlng"][1]}}<br>
+
+timezones : <ul>
+    <li *ngFor="let t of country.timezones">
+        {{t}}
+    </li>
+</ul>
+
+continents : {{country.continents}}<br>
+
+<div *ngIf="country.postalCode">
+postal code format :{{country.postalCode["format"]}}<br>
+postal code regex :{{country.postalCode["regex"]}}<br>
+</div>
+
+car signs : {{country.car["signs"]}}<br>
+car side : {{country.car["side"]}}<br>
+
+    <a [href]="country.maps['googleMaps']" target="_blank">Google Maps</a> |
+    <a [href]="country.maps['openStreetMaps']" target="_blank">Open Street Maps</a>
+
+
+    translations : <ul>
+        <li *ngFor="let t of country.translations|keyvalue">
+            {{t.key}} : official : {{t.value["official"]}} common : {{t.value["common"]}}
+        </li>
+    </ul>
+
+ altSpellings :<ul>
+        <li *ngFor="let a of country.altSpellings">
+            {{a}}
+        </li>
+    </ul>
+
+languages <ul>
+    <li *ngFor="let l of country.languages|keyvalue">
+        {{l.key}} : {{l.value}} 
+    </li>
+</ul>
+
+<img [src]="country.flags['png']" width="200" height="200">
+<img [src]="country.flags['svg']" width="200" height="200">
+alt : {{country.flags["alt"]}}
+
+
+demonyms <ul>
+    <li *ngFor="let d of country.demonyms|keyvalue">
+        {{d.key}}=> f : {{d.value["f"]}} m : {{d.value["m"]}}
+    </li>
+</ul>
+
+
+
+-->
+
+    Common Name : {{country.name.common}}<br>
+    Common Official : {{country.name.official}}<br>
+    Native Names :<ul>
+        <li *ngFor="let n of country.name.nativeName|keyvalue">
+            {{n.key}}=> official : {{n.value["official"]}} common : {{n.value["common"]}}
+        </li>
+    </ul>
+
+
+
+
+
+    <hr>
+
+
+
+</div>
+

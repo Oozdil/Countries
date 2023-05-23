@@ -1,0 +1,180 @@
+<div class="container mt-3 mb-1">
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="images p-3">
+                            <div class="text-center p-2 mb-5"> <img id="main-image" [src]="data.flags['png']"
+                                    width="350" /> </div>
+                            <div class="thumbnail text-center">
+                                <img class="me-5" onclick="change_image(this)" [src]="data.coatOfArms['png']"
+                                    width="80">
+                                <img class="ms-5" onclick="change_image(this)" [src]="data.coatOfArms['svg']"
+                                    width="80">
+                            </div>
+                            <p class="mt-3"><b>Alt : </b>{{data.flags["alt"]}}
+                            </p>
+                            Open in <a [href]="data.maps['googleMaps']" target="_blank">Google Maps</a> <br>
+                            Open in <a [href]="data.maps['openStreetMaps']" target="_blank">Open Street Maps</a>
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="product p-4">
+
+                            <div class="mt-4 mb-3"> <span
+                                    class="text-uppercase text-muted brand">{{data.name.common}}</span>
+                                <h2 class="text-uppercase">{{data.name.official}}</h2>
+                                <div class="price d-flex flex-row align-items-center">
+                                    Native Names :
+                                    <div class="ml-2" *ngFor="let n of data.name.nativeName|keyvalue">
+                                        <span> ({{n.key}}) official : {{n.value["official"]}}</span>
+                                        <span> common : {{n.value["common"]}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+
+                            <div class="row">
+                                <div class="col">
+                                    Capitals : <ul>
+                                        <li *ngFor="let c of data.capital|keyvalue">
+                                            {{c.value}}<br>
+                                        </li>
+                                    </ul>
+                                    Capital Info :<br>
+                                    lat : {{data.capitalInfo["latlng"][0]}}<br>
+                                    lng : {{data.capitalInfo["latlng"][1]}}<br>
+                                </div>
+                                <div class="col">
+                                    Population : {{data.population| number:'1.0-0'}}<br>
+                                    Area : {{data.area| number:'1.0-0'}}<br>
+                                </div>
+                                <div class="col">
+                                    <h6>Codes</h6>
+                                    cca2 : {{data.cca2}}<br>
+                                    ccn3 : {{data.ccn3}}<br>
+                                    cca3 : {{data.cca3}}<br>
+                                    cioc : {{data.cioc}}<br>
+                                </div>
+                                <div class="col">
+                                    Independent : {{data.independent?"Yes":"No"}}<br>
+                                    Status : {{data.status}}<br>
+                                    Flag : {{data.flag}}<br>
+                                    UN-member : {{data.unMember?"Yes":"No"}}<br>
+
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col">                               
+                                    Timezones : <ul>
+                                        <li *ngFor="let t of data.timezones">
+                                            {{t}}
+                                        </li>
+                                    </ul>
+                                    Fifa : {{data.fifa}}<br>
+                                    Landlocked : {{data.landlocked}}<br>
+                                    Start of week : {{data.startOfWeek}}<br>
+                                    Subregion : {{data.subregion}}<br>
+                                    Continents : {{data.continents}}<br>
+                                </div>
+                                <div class="col">
+                                    Idd root : {{data.idd.root}}<br>
+                                    Idd Suffixes : <ul>
+                                        <li *ngFor="let s of data.idd.suffixes|keyvalue">
+                                            {{s.value}}<br>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="col">
+                                    Currencies : <ul>
+                                        <li *ngFor="let c of data.currencies|keyvalue">
+                                            {{c.key}} <br>
+                                            Name : {{c.value["name"]}}
+                                            Symbol : {{c.value["symbol"]}}
+
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="col">
+                                    lat : {{data.latlng[0]}}<br>
+                                    lng : {{data.latlng[1]}}<br>
+
+                                    Region : {{data.region}}<br>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col">
+                                    
+                                    Translations : <ul>
+                                        <li *ngFor="let t of data.translations|keyvalue">
+                                            {{t.key}} : official : {{t.value["official"]}} common :
+                                            {{t.value["common"]}}
+                                        </li>
+                                    </ul>
+
+                                    AltSpellings :<ul>
+                                        <li *ngFor="let a of data.altSpellings">
+                                            {{a}}
+                                        </li>
+                                    </ul>
+
+                                    Languages <ul>
+                                        <li *ngFor="let l of data.languages|keyvalue">
+                                            {{l.key}} : {{l.value}}
+                                        </li>
+                                    </ul>
+
+                                </div>
+                                <div class="col">
+                                    Borders : <ul>
+                                        <li *ngFor="let b of data.borders">
+                                            {{b}}
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="col">
+                                    <div *ngIf="data.postalCode">
+                                        Postal code format :{{data.postalCode["format"]}}<br>
+                                        Postal code regex :{{data.postalCode["regex"]}}<br>
+                                    </div>
+                                    Car signs : {{data.car["signs"]}}<br>
+                                    Car side : {{data.car["side"]}}<br>
+                                </div>
+                                <div class="col">
+                                    Demonyms <ul>
+                                        <li *ngFor="let d of data.demonyms|keyvalue">
+                                            {{d.key}}=> f : {{d.value["f"]}} m : {{d.value["m"]}}
+                                        </li>
+                                    </ul>
+                                    Gini Coef. : <p *ngFor="let g of data.gini|keyvalue">
+                                        {{g.key}} : {{g.value}}
+                                    </p>
+                                    Tld ext.: <ul>
+                                        <li *ngFor="let t of data.tld|keyvalue">
+                                            {{t.value}}<br>
+                                        </li>
+                                    </ul>
+
+                                </div>
+                            </div>
+
+                         
+                            <div class="cart mt-4 align-items-center"> 
+                                <button routerLink="/"    class="btn btn-danger text-uppercase mr-2 px-4">Back to list</button> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+    
+
+
+
